@@ -1,0 +1,279 @@
+
+                                             TILIX                                   passwd Rot13%(*
+sudo apt update
+sudo apt upgrade
+sudo apt upgrade                                               sudo apt remove 
+sudo apt dist-upgrade
+sudo apt autoremove
+sudo apt autoclean
+
+
+
+
+sudo apt install tilix unzip git vim
+mkdir -pv ~/.local/share/fonts/Hack
+cd ~/.local/share/fonts/Hack
+wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip
+ unzip Hack.zip 
+ ls -lh
+ fc-cache -f -v     observação fonte = Hack nerd fontes
+
+sudo apt install zsh
+
+zsh _ enter (executar o terminal) ao executa o terminal definir na seleção de opções a opção n°2 
+
+                                                       PLUGIN
+
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+
+                                                      INSTALL
+~/.fzf/install 
+
+                                                      PLUGIN
+
+git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
+git clone https://github.com/supercrabtree/k $ZSH_CUSTOM/plugins/k
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k
+
+
+para editar o arquivo acima
+ 
+vim ~/.zshrc  use este comando para abrir o arquivo            "/home/dellos/.zshrc"
+
+
+excluir arquivo _ esc dd
+abrir alinha de comando _ shift :
+comando de inserção _ control v _ c insertion
+set number lista os arquivos
+
+
+linha 11 esc dd
+
+#variáveis de configuração do tema PowerLevel10k
+ZSH_THEME="powerlevel10k/powerlevel10k"
+POWERLEVEL10K_MODE="nerdfont-complete"
+
+
+linha 75 esc dd
+75plugin=git
+
+Variável de configuração dos Plugins di ZSH
+plugins=(
+        git
+        zsh-syntax-highlighting
+        fzf
+        zsh-autosuggestions
+        k
+ )
+
+							DOCKER C-E
+sudo apt install python3 python3-pip apt-transport-https ca-certificates curl \software-properties-common linux-image-extra-virtual lsof
+wget -q https://download.docker.com/linux/ubuntu/gpg   
+cat gpg | gpg --dearmor | sudo tee /usr/share/keyrings/docker-ce.gpg > /dev/null    
+echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-ce.gpg] https://download.docker.com/linux/ubuntu noble stable" | sudo tee /etc/apt/sources.list
+sudo apt install --install-recommends docker-ce docker-ce-cli containerd.io docker-buildx-plugin \docker-compose-plugin cgroup-lite
+sudo curl -SL https://github.com/docker/compose/release/download/v2.29.2/docker-compose-linux -o /usr/bin/docker-compose  
+sudo chmod -v 755 /usr/bin/docker-compose  
+sudo usermod -a -G docker $USER
+newgrp docker  
+id 
+							Conda
+ 
+sudo apt-get install libgl1 libglx-mesa0 libxrandr2 libxrandr2 libxss1 libxcursor1 libxcomposite1 libxi6 libxi6 libxtst6 
+sudo apt-get install libasound2t64
+wget https://repo.anaconda.com/archive/Anaconda3-2024.10-1-Linux-x86_64.sh
+bash ~/Anaconda3-2024.10-1-Linux-x86_64.sh 
+echo "alias ligarconda='source /home/devildev/anaconda3/etc/profile.d/conda.sh'" >> ~/.zshrc  
+
+
+
+							Azure
+
+sudo apt install python3.12-venv 
+
+# Cria o diretório centralizado
+mkdir -p ~/.virtualenvs
+
+
+# Cria o ambiente
+python3 -m venv ~/.virtualenvs/azure_env
+ 
+
+# Ativa ele
+source ~/.virtualenvs/azure_env/bin/activate
+
+# Instala o essencial para Azure de uma vez só
+pip install --upgrade pip
+pip install azure-cli azure-identity azure-mgmt-resource azure-storage-blob
+
+
+								  vim ~/.zshrc
+alias azure-env='source ~/.virtualenvs/azure_env/bin/activate'
+
+mkdir -p ~/projetos/rag_azure && cd ~/projetos/rag_azure
+azure-env
+
+								  POETRY
+
+# A. Instalação (Binário que se monta na velocidade da luz)
+curl -sSL https://install.python-poetry.org | python3 -
+
+# B. Configuração Global (Para o .venv herdar a pasta do projeto)
+
+export PATH="/home/devildev/.local/bin:$PATH"
+
+poetry config virtualenvs.in-project true
+
+# C. Inicialização do Projeto (Cria o pyproject.toml)
+mkdir stream_fornecedores && cd stream_fornecedores
+poetry init --no-interaction
+
+# D. Instalação das Dependências (Cria o .venv e o poetry.lock)
+# Usando as restrições que discutimos para o PyTorch/Triton
+poetry add "python>=3.12,<3.15" fastapi uvicorn pika redis torch sentence-transformers qdrant-client
+
+# E. Ativação da "Manobra" (O Túnel de Isolamento)
+eval $(poetry env activate)
+
+echo "alias ativar='eval \$(poetry env activate)'" >> ~/.zshrc
+source ~/.zshrc
+
+
+
+
+
+cp -v "/mnt/c/users/particular/onedrive/documentos/backup_git_wsl/id_ed25519"* ~/.ssh/ 
+cp -v "/mnt/c/Users/Particular/onedrive/documentos/backup_git_wsl/.gitconfig"* ~/.ssh/
+cp -rv "/mnt/c/Users/Particular/OneDrive/Documentos/backup_git_wsl/.gnupg" ~   
+
+
+
+git config --global user.name "Dellos12"
+
+git config --global user.email "DellosDevOps@outlook.com"
+
+git config --global credential.helper store
+
+chmod 700 ~/.ssh
+
+chmod 600 ~/.ssh/id_ed25519
+
+chmod 644 ~/.ssh/id_ed25519.pub
+
+git config --list --show-origin
+
+eval "$(ssh-agent -s)"
+
+ssh-add ~/.ssh/id_ed25519
+
+ssh-add -l
+
+								GPG
+
+Copiar de volta:
+
+# 2. Corrigir o dono (trocar de root para seu usuário)
+sudo chown -R $(whoami):$(whoami) ~/.gnupg ~/.gitconfig
+
+# 3. Dar as permissões restritas que o GPG exige
+chmod 700 ~/.gnupg
+chmod 600 ~/.gnupg/*
+
+
+git config --global commit.gpgsign true
+
+
+passphase GPG
+Cafe Com Git 2024!
+
+
+echo 'export GPG_TTY=$(tty)' >> ~/.zshrc
+source ~/.zshrc  
+
+! First copy your one-time code: F619-4067
+Press Enter to open github.com in your browser... 
+! First copy your one-time code: 6342-1419
+   	
+				
+								kaggle
+
+conda 
+conda create -n kaggle_env python=3.10
+conda activate kaggle_env
+
+
+mkdir -p ~/.kaggle
+
+
+echo '{"username":"sidhmarpj","key":"KGAT_4cb24e03bc37bc2c892ad83511d50371"}' > ~/.kaggle/kaggle.json
+export KAGGLE_API_TOKEN=KGAT_4cb24e03bc37bc2c892ad83511d50371
+
+chmod 600 /home/devildev/.kaggle/kaggle.json
+
+
+ 
+
+kaggle competitions list --group general --sort-by prize
+
+kaggle competitions list
+
+								CÓDIGO PYTHON
+								  COLLAB
+from google.colab import files
+import os
+
+# 1. Upload do seu kaggle.json que você baixou antes
+if not os.path.exists('/root/.kaggle/kaggle.json'):
+    uploaded = files.upload()
+    !mkdir -p ~/.kaggle && mv kaggle.json ~/.kaggle/ && chmod 600 ~/.kaggle/kaggle.json
+
+# 2. Download direto para a instância do Colab
+!kaggle competitions download -c ai-mathematical-olympiad-progress-prize-3
+!unzip ai-mathematical-olympiad-progress-prize-3.zip -d data
+
+
+								
+								GO
+
+sudo rm -rf /usr/local/go
+
+wget https://go.dev/dl/go1.24.2.linux-amd64.tar.gz
+sudo tar -C /usr/local -xzf go1.24.2.linux-amd64.tar.gz
+
+export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:$(go env GOPATH)/bin
+
+sudo apt update
+sudo apt install -y protobuf-compiler
+
+go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
+go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
+
+
+
+
+
+
+
+API Token is now available
+Please copy your API token now. You won't be able to view it again. You can always generate a new one if needed.
+KGAT_e747f6a58b085497590a3dea6bde85a7
+API TOKEN
+
+To use this token, set the KAGGLE_API_TOKEN environment variable:
+
+After setting KAGGLE_API_TOKEN, you can use the client as follows:
+
+kaggle competitions list
+
+
+
+
+
+
+
+
+
+
