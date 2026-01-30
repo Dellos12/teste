@@ -1,0 +1,80 @@
+ 
+Standard
+Introduction
+OpenFrameworks (OF) is a powerful application programming framework portable across different popular operating systems.
+
+Download and compile OF
+
+# git openframeworks and submodules
+git clone --recursively https://github.com/openframeworks/openFrameworks
+
+
+cp tar -xvzf of_v0.12.1_linux64_gcc6_release.tar.gz
+tar -xvzf of_v0.12.1_linux64_gcc6_release.tar.gz
+
+
+
+# Load required libraries
+cd OF/scripts/linux; ./download_libs.sh
+
+# Install dependencies
+cd OF/scripts/linux/ubuntu
+sudo ./install_dependencies.sh
+
+# Compile OF
+cd OF/scripts/linux
+./compileOF.sh -j3
+
+# Compile Project Generator
+cd OF/scripts/linux
+./compilePG.sh
+Build OF examples
+OF comes with many examples. To build them all, simply
+
+
+cd OF/scripts/linux
+./buildAllExamples.sh
+Note: you may encounter error as I have, related to “undefined reference to `ofAppEGLWindow::Settings::Settings()'”, which I haven’t found a solution yet.
+Instead doing a massive build, you may want to try build each individually:
+
+
+cd OF/examples/graphics/polygonExample
+make
+cd bin
+./polygonExample
+Working with QtCreator
+To prepare OF to work with QtCreator, do the following:
+
+
+cd OF/scripts/qtcreator
+./install_template.sh
+Now you can create new OF projects under QtCreator, as described by the video at the bottom of this tutorial.
+
+Share this:
+ LinkedIn Facebook X Email Pinterest
+Like this:
+DateDecember 10, 2017
+Tags3d rendering, OF, openframeworks, software
+CommentsLeave a comment
+Post navigationMusing on Intelligence – Part 10: Generalization, maps and schemasWebRTC on iOS: setup the library
+Leave a Reply
+
+conceito onde o executavel esta?
+projectGenerator -o"/home/cairo/openFrameWorks" /home/cairo/openFrameWorks/apps/myApps/Fisica    
+projectGenerator -o"/home/cairo/openFrameworks" /home/cairo/openFrameworks/apps/myApps/Fisica
+
+
+
+
+
+
+
+ cp eDEX-UI-Linux-x86_64.AppImage /home/devildev/terminal
+ 
+~$ chmod a+x eDEX-UI-Linux-x86_64.AppImage
+ 
+ 
+sudo apt install libasound2t64
+sudo apt install libnss3
+sudo apt install libfuse2
+
